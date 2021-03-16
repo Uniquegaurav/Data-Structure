@@ -184,6 +184,32 @@ int findNode(Node *head, int n)
     }
     //Write your code here
 }
+
+// function to append the last 'N' nodes towards the front of the singly linked list
+Node *appendLastNToFirst(Node *head, int n){
+    
+   if(head==NULL){
+       return head;
+   }
+    Node * last = head;
+    int len =1;
+    while(last->next!=NULL){
+        	len += 1;
+            last = last->next;
+    }
+    // first finding length of linked list
+    int req = len-n;
+    Node * temp =head;
+    while(req>1){
+        temp = temp->next;
+        req = req-1;
+    }
+    last->next = head;
+    head= temp->next;
+    temp->next = NULL;
+    return head;
+}
+
 int main(){
         
         Node * head =  takeInput();
